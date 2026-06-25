@@ -488,6 +488,46 @@
         </div>
     </div>
 
+    <!-- Command Palette -->
+    <div class="cmd-palette-overlay" id="cmdPalette">
+        <div class="cmd-palette">
+            <div class="cmd-palette-input">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                    <circle cx="7" cy="7" r="5" stroke="currentColor" stroke-width="1.3"/>
+                    <path d="M11 11L14 14" stroke="currentColor" stroke-width="1.3"/>
+                </svg>
+                <input type="text" id="cmdInput" placeholder="Type a command or search..." autocomplete="off" />
+            </div>
+            <div class="cmd-palette-results" id="cmdResults">
+                <div class="cmd-result selected" data-action="new-campaign">
+                    <div class="cmd-result-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 1V11M1 6H11" stroke="currentColor" stroke-width="1.5"/></svg></div>
+                    <div class="cmd-result-text"><span class="cmd-result-name">New Campaign</span><span class="cmd-result-desc">Create a new campaign from scratch</span></div>
+                </div>
+                <div class="cmd-result" data-action="new-journey">
+                    <div class="cmd-result-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="1" y="2" width="3" height="3" stroke="currentColor" stroke-width="1.2"/><rect x="8" y="4.5" width="3" height="3" stroke="currentColor" stroke-width="1.2"/><path d="M4 3.5H6L8 6" stroke="currentColor" stroke-width="1.2"/></svg></div>
+                    <div class="cmd-result-text"><span class="cmd-result-name">New Journey</span><span class="cmd-result-desc">Build an automated customer journey</span></div>
+                </div>
+                <div class="cmd-result" data-action="create-segment">
+                    <div class="cmd-result-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="4" r="2.5" stroke="currentColor" stroke-width="1.2"/><path d="M2 11C2 8.8 3.8 7 6 7C8.2 7 10 8.8 10 11" stroke="currentColor" stroke-width="1.2"/></svg></div>
+                    <div class="cmd-result-text"><span class="cmd-result-name">Create Segment</span><span class="cmd-result-desc">Define a new audience segment</span></div>
+                </div>
+                <div class="cmd-result" data-action="view-analytics">
+                    <div class="cmd-result-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 10L4 6L7 8L11 3" stroke="currentColor" stroke-width="1.2"/></svg></div>
+                    <div class="cmd-result-text"><span class="cmd-result-name">View Analytics</span><span class="cmd-result-desc">Open the analytics dashboard</span></div>
+                </div>
+                <div class="cmd-result" data-action="settings">
+                    <div class="cmd-result-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="2" stroke="currentColor" stroke-width="1.2"/><path d="M6 1V2.5M6 9.5V11M1 6H2.5M9.5 6H11" stroke="currentColor" stroke-width="1.2"/></svg></div>
+                    <div class="cmd-result-text"><span class="cmd-result-name">Settings</span><span class="cmd-result-desc">Manage account and preferences</span></div>
+                </div>
+            </div>
+            <div class="cmd-palette-footer">
+                <span class="cmd-shortcut"><kbd>↑↓</kbd> Navigate</span>
+                <span class="cmd-shortcut"><kbd>↵</kbd> Select</span>
+                <span class="cmd-shortcut"><kbd>Esc</kbd> Close</span>
+            </div>
+        </div>
+    </div>
+
     <!-- Toast Notifications -->
     <div class="toast-container" id="toastContainer"></div>
 
