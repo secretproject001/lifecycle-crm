@@ -6,87 +6,67 @@ navItems.forEach(item => {
         e.preventDefault();
         navItems.forEach(i => i.classList.remove('active'));
         item.classList.add('active');
-        
         const page = item.dataset.page;
         document.querySelector('.page-title').textContent = 
             page.charAt(0).toUpperCase() + page.slice(1);
     });
 });
 
-// ===== TAB BUTTONS =====
-const tabBtns = document.querySelectorAll('.tab-btn');
+// ===== TOGGLE BUTTONS =====
+const toggleBtns = document.querySelectorAll('.toggle-btn');
 
-tabBtns.forEach(btn => {
+toggleBtns.forEach(btn => {
     btn.addEventListener('click', () => {
-        tabBtns.forEach(b => b.classList.remove('active'));
+        toggleBtns.forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
-        
-        // Animate chart bars with random data
-        const bars = document.querySelectorAll('.chart-bar-fill');
-        bars.forEach(bar => {
-            const height = Math.floor(Math.random() * 60) + 25;
-            bar.style.height = height + '%';
+        // Randomize chart bars
+        document.querySelectorAll('.chart-col .bar').forEach(bar => {
+            bar.style.height = (Math.random() * 65 + 25) + '%';
         });
     });
 });
 
-// ===== ANIMATE STATS ON LOAD =====
-const statValues = document.querySelectorAll('.stat-value');
-
-const animateValue = (el, start, end, suffix = '') => {
-    const duration = 800;
-    const startTime = performance.now();
-    
-    const update = (currentTime) => {
-        const elapsed = currentTime - startTime;
-        const progress = Math.min(elapsed / duration, 1);
-        const eased = 1 - Math.pow(1 - progress, 3);
-        const current = Math.floor(start + (end - start) * eased);
-        
-        el.textContent = current.toLocaleString() + suffix;
-        
-        if (progress < 1) {
-            requestAnimationFrame(update);
-        }
-    };
-    
-    requestAnimationFrame(update);
-};
-
-// Trigger animations when visible
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            const el = entry.target;
-            const text = el.textContent;
-            
-            if (text.includes('M')) {
-                animateValue(el, 0, 1.2, 'M');
-            } else if (text.includes('%')) {
-                animateValue(el, 0, parseFloat(text), '%');
-            } else if (text.includes(',')) {
-                animateValue(el, 0, parseInt(text.replace(/,/g, '')), '');
-                // Re-format with commas after animation
-                setTimeout(() => { el.textContent = text; }, 850);
-            } else {
-                animateValue(el, 0, parseInt(text), '');
-            }
-            
-            observer.unobserve(el);
-        }
+// ===== ANIMATE ON LOAD =====
+document.addEventListener('DOMContentLoaded', () => {
+    // Animate bars in
+    const bars = document.querySelectorAll('.chart-col .bar');
+    bars.forEach((bar, i) => {
+        const h = bar.style.height;
+        bar.style.height = '0%';
+        setTimeout(() => {
+            bar.style.height = h;
+        }, 100 + i * 60);
     });
-}, { threshold: 0.5 });
 
-statValues.forEach(el => observer.observe(el));
-
-// ===== CHART BAR HOVER =====
-const chartBars = document.querySelectorAll('.chart-bar-wrapper');
-
-chartBars.forEach(bar => {
-    bar.addEventListener('mouseenter', () => {
-        bar.querySelector('.chart-bar-fill').style.opacity = '0.7';
+    // Animate stat bars
+    const statBars = document.querySelectorAll('.stat-bar-fill');
+    statBars.forEach((bar, i) => {
+        const w = bar.style.width;
+        bar.style.width = '0%';
+        bar.style.transition = 'width 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
+        setTimeout(() => {
+            bar.style.width = w;
+        }, 200 + i * 100);
     });
-    bar.addEventListener('mouseleave', () => {
-        bar.querySelector('.chart-bar-fill').style.opacity = '1';
+
+    // Animate channel bars
+    const chBars = document.querySelectorAll('.channel-bar');
+    chBars.forEach((bar, i) => {
+        const w = bar.style.width;
+        bar.style.width = '0%';
+        setTimeout(() => {
+            bar.style.width = w;
+        }, 400 + i * 80);
+    });
+
+    // Animate journey bars
+    const jBars = document.querySelectorAll('.journey-bar');
+    jBars.forEach((bar, i) => {
+        const w = bar.style.width;
+        bar.style.width = '0%';
+        bar.style.transition = 'width 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
+        setTimeout(() => {
+            bar.style.width = w;
+        }, 600 + i * 100);
     });
 });
