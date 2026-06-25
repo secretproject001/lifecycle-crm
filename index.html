@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lifecycle — Intelligent Customer Engagement</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav" id="nav">
+        <div class="nav-container">
+            <a href="#" class="nav-logo">
+                <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+                    <circle cx="14" cy="14" r="12" stroke="currentColor" stroke-width="2"/>
+                    <path d="M9 14C9 11.2 11.2 9 14 9C16.8 9 19 11.2 19 14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    <circle cx="14" cy="17" r="2" fill="currentColor"/>
+                </svg>
+                <span>Lifecycle</span>
+            </a>
+            <div class="nav-links" id="navLinks">
+                <a href="#platform">Platform</a>
+                <a href="#solutions">Solutions</a>
+                <a href="#channels">Channels</a>
+                <a href="#pricing">Pricing</a>
+                <a href="#resources">Resources</a>
+            </div>
+            <div class="nav-actions">
+                <a href="#" class="nav-link-login">Log in</a>
+                <a href="#" class="btn-primary btn-sm">Start Free</a>
+            </div>
+            <button class="nav-mobile-toggle" id="mobileToggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-badge">
+                <span class="badge-dot"></span>
+                Trusted by 1,200+ D2C brands worldwide
+            </div>
+            <h1 class="hero-title">
+                Turn every customer<br>
+                into a <span class="text-gradient">lifetime relationship</span>
+            </h1>
+            <p class="hero-subtitle">
+                Orchestrate personalized journeys across email, push, SMS, and WhatsApp. 
+                Powered by AI that understands your customers better than they understand themselves.
+            </p>
+            <div class="hero-ctas">
+                <a href="#" class="btn-primary btn-lg">Get Started Free</a>
+                <a href="#" class="btn-secondary btn-lg">
+                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                        <circle cx="9" cy="9" r="8" stroke="currentColor" stroke-width="1.5"/>
+                        <path d="M7 6L12 9L7 12V6Z" fill="currentColor"/>
+                    </svg>
+                    Watch Demo
+                </a>
+            </div>
+            <div class="hero-metrics">
+                <div class="metric">
+                    <span class="metric-value">3.2×</span>
+                    <span class="metric-label">Higher retention</span>
+                </div>
+                <div class="metric-divider"></div>
+                <div class="metric">
+                    <span class="metric-value">47%</span>
+                    <span class="metric-label">More repeat purchases</span>
+                </div>
+                <div class="metric-divider"></div>
+                <div class="metric">
+                    <span class="metric-value">12 min</span>
+                    <span class="metric-label">Setup time</span>
+                </div>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <div class="dashboard-preview">
+                <div class="dashboard-header">
+                    <div class="dashboard-dots">
+                        <span></span><span></span><span></span>
+                    </div>
+                    <span class="dashboard-title">Campaign Performance</span>
+                </div>
+                <div class="dashboard-body">
+                    <div class="dashboard-sidebar">
+                        <div class="sidebar-item active">
+                            <div class="sidebar-icon"></div>
+                            <span>Overview</span>
+                        </div>
+                        <div class="sidebar-item">
+                            <div class="sidebar-icon"></div>
+                            <span>Journeys</span>
+                        </div>
+                        <div class="sidebar-item">
+                            <div class="sidebar-icon"></div>
+                            <span>Segments</span>
+                        </div>
+                        <div class="sidebar-item">
+                            <div class="sidebar-icon"></div>
+                            <span>Analytics</span>
+                        </div>
+                    </div>
+                    <div class="dashboard-content">
+                        <div class="dashboard-chart">
+                            <div class="chart-bars">
+                                <div class="chart-bar" style="height: 40%"></div>
+                                <div class="chart-bar" style="height: 65%"></div>
+                                <div class="chart-bar" style="height: 45%"></div>
+                                <div class="chart-bar" style="height: 80%"></div>
+                                <div class="chart-bar" style="height: 60%"></div>
+                                <div class="chart-bar" style="height: 90%"></div>
+                                <div class="chart-bar" style="height: 75%"></div>
+                            </div>
+                        </div>
+                        <div class="dashboard-cards">
+                            <div class="mini-card">
+                                <span class="mini-card-label">Open Rate</span>
+                                <span class="mini-card-value">68.4%</span>
+                            </div>
+                            <div class="mini-card">
+                                <span class="mini-card-label">Click Rate</span>
+                                <span class="mini-card-value">24.1%</span>
+                            </div>
+                            <div class="mini-card">
+                                <span class="mini-card-label">Revenue</span>
+                                <span class="mini-card-value">$42.8K</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Logos Section -->
+    <section class="logos-section">
+        <p class="logos-label">Powering growth for category leaders</p>
+        <div class="logos-track">
+            <div class="logos-slide" id="logosSlide">
+                <div class="logo-item">Allbirds</div>
+                <div class="logo-item">Warby Parker</div>
+                <div class="logo-item">Glossier</div>
+                <div class="logo-item">Casper</div>
+                <div class="logo-item">Away</div>
+                <div class="logo-item">Bombas</div>
+                <div class="logo-item">Hims</div>
+                <div class="logo-item">Ritual</div>
+                <div class="logo-item">Allbirds</div>
+                <div class="logo-item">Warby Parker</div>
+                <div class="logo-item">Glossier</div>
+                <div class="logo-item">Casper</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Platform Section -->
+    <section class="platform-section" id="platform">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-tag">Platform</span>
+                <h2 class="section-title">One platform.<br>Every touchpoint.</h2>
+                <p class="section-subtitle">
+                    From first visit to loyal advocate, orchestrate every moment that matters 
+                    with intelligence that scales.
+                </p>
+            </div>
+            <div class="platform-grid">
+                <div class="platform-card platform-card-large">
+                    <div class="platform-card-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M4 4H10V10H4V4Z" stroke="currentColor" stroke-width="1.5"/>
+                            <path d="M14 4H20V10H14V4Z" stroke="currentColor" stroke-width="1.5"/>
+                            <path d="M4 14H10V20H4V14Z" stroke="currentColor" stroke-width="1.5"/>
+                            <path d="M14 14H20V20H14V14Z" stroke="currentColor" stroke-width="1.5"/>
+                        </svg>
+                    </div>
+                    <h3>Journey Orchestration</h3>
+                    <p>Design multi-step, cross-channel customer journeys with our visual builder. Every path adapts in real-time based on behavior.</p>
+                    <div class="card-visual journey-visual">
+                        <div class="journey-node journey-node-start">Start</div>
+                        <div class="journey-line"></div>
+                        <div class="journey-node journey-node-condition">Wait 2h</div>
+                        <div class="journey-branch">
+                            <div class="journey-line-branch"></div>
+                            <div class="journey-node journey-node-action">Email</div>
+                            <div class="journey-line-branch"></div>
+                            <div class="journey-node journey-node-action">Push</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="platform-card">
+                    <div class="platform-card-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="1.5"/>
+                            <path d="M4 20C4 16.6863 7.58172 14 12 14C16.4183 14 20 16.6863 20 20" stroke="currentColor" stroke-width="1.5"/>
+                        </svg>
+                    </div>
+                    <h3>Smart Segmentation</h3>
+                    <p>AI-powered cohorts that update in real-time. RFM, behavioral, predictive — all without writing a query.</p>
+                </div>
+                <div class="platform-card">
+                    <div class="platform-card-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M12 2L15 8L21 9L16.5 13.5L17.5 20L12 17L6.5 20L7.5 13.5L3 9L9 8L12 2Z" stroke="currentColor" stroke-width="1.5"/>
+                        </svg>
+                    </div>
+                    <h3>AI Personalization</h3>
+                    <p>Every message, timing, and channel is optimized by AI. Send-time optimization that actually works.</p>
+                </div>
+                <div class="platform-card">
+                    <div class="platform-card-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M3 3V21H21" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                            <path d="M7 16L11 11L15 14L20 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3>Deep Analytics</h3>
+                    <p>Revenue attribution, cohort analysis, and funnel insights. Know exactly which campaigns drive growth.</p>
+                </div>
+                <div class="platform-card">
+                    <div class="platform-card-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <rect x="3" y="3" width="18" height="18" rx="3" stroke="currentColor" stroke-width="1.5"/>
+                            <path d="M8 12H16M12 8V16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <h3>200+ Integrations</h3>
+                    <p>Shopify, WooCommerce, Stripe, Segment — connect your entire stack in clicks, not sprints.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Channels Section -->
+    <section class="channels-section" id="channels">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-tag">Channels</span>
+                <h2 class="section-title">Meet customers<br>where they are</h2>
+                <p class="section-subtitle">
+                    One unified platform for every communication channel. 
+                    Consistent experience, zero fragmentation.
+                </p>
+            </div>
+            <div class="channels-grid">
+                <div class="channel-card">
+                    <div class="channel-icon channel-email">
+                        <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+                            <rect x="3" y="6" width="22" height="16" rx="2" stroke="currentColor" stroke-width="1.5"/>
+                            <path d="M3 8L14 16L25 8" stroke="currentColor" stroke-width="1.5"/>
+                        </svg>
+                    </div>
+                    <h4>Email</h4>
+                    <p>Dynamic templates, AMP emails, and AI-written subject lines.</p>
+                </div>
+                <div class="channel-card">
+                    <div class="channel-icon channel-push">
+                        <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+                            <rect x="7" y="3" width="14" height="22" rx="3" stroke="currentColor" stroke-width="1.5"/>
+                            <path d="M12 22H16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <h4>Push</h4>
+                    <p>Rich push notifications with images, actions, and deep links.</p>
+                </div>
+                <div class="channel-card">
+                    <div class="channel-icon channel-sms">
+                        <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+                            <path d="M4 6C4 4.89543 4.89543 4 6 4H22C23.1046 4 24 4.89543 24 6V18C24 19.1046 23.1046 20 22 20H8L4 24V6Z" stroke="currentColor" stroke-width="1.5"/>
+                            <path d="M9 11H19M9 15H15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <h4>SMS</h4>
+                    <p>Two-way conversational SMS with smart opt-in management.</p>
+                </div>
+                <div class="channel-card">
+                    <div class="channel-icon channel-whatsapp">
+                        <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+                            <path d="M14 3C7.92 3 3 7.92 3 14C3 16.3 3.7 18.4 4.9 20.2L3.5 24.5L7.9 23.1C9.7 24.2 11.8 24.9 14 24.9C20.08 24.9 25 19.98 25 13.9C25 7.92 20.08 3 14 3Z" stroke="currentColor" stroke-width="1.5"/>
+                            <path d="M10 12C10 12 10.5 14 12.5 16C14.5 18 16.5 18 16.5 18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <h4>WhatsApp</h4>
+                    <p>Business API integration with templates, media, and commerce.</p>
+                </div>
+                <div class="channel-card">
+                    <div class="channel-icon channel-inapp">
+                        <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+                            <rect x="3" y="5" width="22" height="18" rx="2" stroke="currentColor" stroke-width="1.5"/>
+                            <path d="M3 9H25" stroke="currentColor" stroke-width="1.5"/>
+                            <rect x="6" y="12" width="8" height="8" rx="1" stroke="currentColor" stroke-width="1"/>
+                        </svg>
+                    </div>
+                    <h4>In-App</h4>
+                    <p>Banners, modals, and tooltips triggered by real-time behavior.</p>
+                </div>
+                <div class="channel-card">
+                    <div class="channel-icon channel-web">
+                        <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+                            <circle cx="14" cy="14" r="11" stroke="currentColor" stroke-width="1.5"/>
+                            <path d="M14 3C14 3 18 8 18 14C18 20 14 25 14 25" stroke="currentColor" stroke-width="1.5"/>
+                            <path d="M14 3C14 3 10 8 10 14C10 20 14 25 14 25" stroke="currentColor" stroke-width="1.5"/>
+                            <path d="M4 11H24M4 17H24" stroke="currentColor" stroke-width="1.5"/>
+                        </svg>
+                    </div>
+                    <h4>Web Push</h4>
+                    <p>Browser notifications that re-engage visitors after they leave.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Proof / Testimonial -->
+    <section class="testimonial-section">
+        <div class="section-container">
+            <div class="testimonial-card">
+                <blockquote>
+                    "Lifecycle replaced three tools in our stack and increased our repeat purchase rate by 52% in the first quarter. The journey builder alone was worth the switch."
+                </blockquote>
+                <div class="testimonial-author">
+                    <div class="author-avatar">SR</div>
+                    <div class="author-info">
+                        <span class="author-name">Sarah Reynolds</span>
+                        <span class="author-role">VP Growth, Bloom & Wild</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solutions Section -->
+    <section class="solutions-section" id="solutions">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-tag">Solutions</span>
+                <h2 class="section-title">Built for your<br>growth stage</h2>
+                <p class="section-subtitle">
+                    Whether you're launching or scaling, Lifecycle adapts to your ambition.
+                </p>
+            </div>
+            <div class="solutions-grid">
+                <div class="solution-card">
+                    <div class="solution-number">01</div>
+                    <h3>D2C & E-commerce</h3>
+                    <p>Cart recovery, post-purchase flows, loyalty programs, and win-back campaigns designed for online retail.</p>
+                    <ul class="solution-features">
+                        <li>Abandoned cart sequences</li>
+                        <li>Product recommendation engine</li>
+                        <li>Loyalty tier automation</li>
+                    </ul>
+                </div>
+                <div class="solution-card">
+                    <div class="solution-number">02</div>
+                    <h3>SaaS & Apps</h3>
+                    <p>Onboarding flows, feature adoption nudges, and churn prediction for subscription businesses.</p>
+                    <ul class="solution-features">
+                        <li>Trial-to-paid conversion flows</li>
+                        <li>Feature adoption tracking</li>
+                        <li>Health score monitoring</li>
+                    </ul>
+                </div>
+                <div class="solution-card">
+                    <div class="solution-number">03</div>
+                    <h3>Fintech & Banking</h3>
+                    <p>Secure, compliant engagement for financial products with real-time transactional triggers.</p>
+                    <ul class="solution-features">
+                        <li>KYC completion journeys</li>
+                        <li>Transaction-based alerts</li>
+                        <li>Cross-sell automation</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="section-container">
+            <div class="cta-card">
+                <h2>Ready to build relationships<br>that compound?</h2>
+                <p>Start free. No credit card. Full platform access for 14 days.</p>
+                <div class="cta-actions">
+                    <a href="#" class="btn-primary btn-lg">Start Free Trial</a>
+                    <a href="#" class="btn-ghost btn-lg">Talk to Sales</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <a href="#" class="nav-logo">
+                        <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+                            <circle cx="14" cy="14" r="12" stroke="currentColor" stroke-width="2"/>
+                            <path d="M9 14C9 11.2 11.2 9 14 9C16.8 9 19 11.2 19 14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            <circle cx="14" cy="17" r="2" fill="currentColor"/>
+                        </svg>
+                        <span>Lifecycle</span>
+                    </a>
+                    <p class="footer-tagline">Intelligent customer engagement for brands that think long-term.</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-col">
+                        <h5>Product</h5>
+                        <a href="#">Journey Builder</a>
+                        <a href="#">Segmentation</a>
+                        <a href="#">Analytics</a>
+                        <a href="#">AI Engine</a>
+                        <a href="#">Integrations</a>
+                    </div>
+                    <div class="footer-col">
+                        <h5>Channels</h5>
+                        <a href="#">Email</a>
+                        <a href="#">Push</a>
+                        <a href="#">SMS</a>
+                        <a href="#">WhatsApp</a>
+                        <a href="#">In-App</a>
+                    </div>
+                    <div class="footer-col">
+                        <h5>Resources</h5>
+                        <a href="#">Documentation</a>
+                        <a href="#">API Reference</a>
+                        <a href="#">Blog</a>
+                        <a href="#">Case Studies</a>
+                        <a href="#">Community</a>
+                    </div>
+                    <div class="footer-col">
+                        <h5>Company</h5>
+                        <a href="#">About</a>
+                        <a href="#">Careers</a>
+                        <a href="#">Press</a>
+                        <a href="#">Contact</a>
+                        <a href="#">Security</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>© 2026 Lifecycle. All rights reserved.</span>
+                <div class="footer-legal">
+                    <a href="#">Privacy</a>
+                    <a href="#">Terms</a>
+                    <a href="#">Cookies</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
