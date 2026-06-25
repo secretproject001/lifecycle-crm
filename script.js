@@ -170,8 +170,8 @@ function addFeedItem() {
     
     // Update the first-child dot color
     feed.querySelectorAll('.feed-dot').forEach((dot, i) => {
-        dot.style.background = i === 0 ? 'var(--blue)' : '';
-        dot.style.boxShadow = i === 0 ? '0 0 6px var(--blue-glow)' : '';
+        dot.style.background = i === 0 ? 'var(--red)' : '';
+        dot.style.boxShadow = i === 0 ? '0 0 6px rgba(212,88,63,0.15)' : '';
     });
 
     // Remove last item if too many
@@ -231,7 +231,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const newVal = target * (1 + delta);
         
         el.style.transition = 'color 0.2s';
-        el.style.color = 'var(--blue)';
+        el.style.color = 'var(--red)';
         
         if (divide > 1) {
             el.textContent = (newVal / divide).toFixed(1) + suffix;
