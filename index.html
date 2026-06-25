@@ -16,6 +16,11 @@
                     <div class="logo-mark">L</div>
                     <span>LIFECYCLE</span>
                 </div>
+                <button class="sidebar-collapse-btn" id="sidebarCollapse" aria-label="Collapse sidebar">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                        <path d="M10 3L5 8L10 13" stroke="currentColor" stroke-width="1.4"/>
+                    </svg>
+                </button>
             </div>
 
             <nav class="sidebar-nav">
@@ -126,8 +131,15 @@
             <!-- Top Bar -->
             <header class="topbar">
                 <div class="topbar-left">
-                    <h1 class="page-title">Dashboard</h1>
-                    <span class="page-subtitle">Overview of your engagement metrics</span>
+                    <button class="sidebar-toggle-btn" id="sidebarExpand" aria-label="Toggle sidebar">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                            <path d="M2 4H14M2 8H14M2 12H14" stroke="currentColor" stroke-width="1.4"/>
+                        </svg>
+                    </button>
+                    <div class="topbar-title-group">
+                        <h1 class="page-title">Dashboard</h1>
+                        <span class="page-subtitle">Overview of your engagement metrics</span>
+                    </div>
                 </div>
                 <div class="topbar-right">
                     <div class="search-box">
