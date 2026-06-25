@@ -1,3 +1,40 @@
+/* ===== GEOM FONT ===== */
+@font-face {
+    font-family: 'Geom';
+    src: url('fonts/Geom-Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Geom';
+    src: url('fonts/Geom-Medium.woff2') format('woff2');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Geom';
+    src: url('fonts/Geom-SemiBold.woff2') format('woff2');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Geom';
+    src: url('fonts/Geom-Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Geom';
+    src: url('fonts/Geom-Black.woff2') format('woff2');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+
 *, *::before, *::after {
     margin: 0;
     padding: 0;
