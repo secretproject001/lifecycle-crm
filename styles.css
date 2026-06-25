@@ -57,8 +57,9 @@
     --grey-100: #f0f0f0;
     --grey-50: #f7f7f7;
     --white: #ffffff;
-    --font-display: 'Geom', sans-serif;
-    --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --accent-red: #D4583F;
+    --accent-blue: #2B48D8;
+    --font: 'Geom', sans-serif;
     --sidebar-w: 232px;
 }
 
@@ -68,7 +69,7 @@ html {
 }
 
 body {
-    font-family: var(--font-body);
+    font-family: var(--font);
     background: var(--bg);
     color: var(--black);
     font-size: 13px;
@@ -116,13 +117,13 @@ table { width: 100%; border-collapse: collapse; }
     display: flex;
     align-items: center;
     justify-content: center;
-    font-family: var(--font-display);
+    font-family: var(--font);
     font-weight: 700;
     font-size: 14px;
 }
 
 .logo span {
-    font-family: var(--font-display);
+    font-family: var(--font);
     font-size: 13px;
     font-weight: 600;
     letter-spacing: 0.12em;
@@ -170,6 +171,7 @@ table { width: 100%; border-collapse: collapse; }
     color: var(--black);
     background: var(--white);
     font-weight: 500;
+    box-shadow: inset 2px 0 0 var(--accent-blue);
 }
 
 .nav-item svg { flex-shrink: 0; }
@@ -196,7 +198,7 @@ table { width: 100%; border-collapse: collapse; }
     justify-content: center;
     font-size: 12px;
     font-weight: 700;
-    font-family: var(--font-display);
+    font-family: var(--font);
 }
 
 .user-details {
@@ -243,7 +245,7 @@ table { width: 100%; border-collapse: collapse; }
 }
 
 .page-title {
-    font-family: var(--font-display);
+    font-family: var(--font);
     font-size: 20px;
     font-weight: 700;
     letter-spacing: -0.02em;
@@ -307,7 +309,7 @@ table { width: 100%; border-collapse: collapse; }
     right: 6px;
     width: 5px;
     height: 5px;
-    background: var(--black);
+    background: var(--accent-red);
 }
 
 .btn-create {
@@ -366,7 +368,7 @@ table { width: 100%; border-collapse: collapse; }
 }
 
 .stat-value {
-    font-family: var(--font-display);
+    font-family: var(--font);
     font-size: 32px;
     font-weight: 700;
     letter-spacing: -0.03em;
@@ -378,7 +380,7 @@ table { width: 100%; border-collapse: collapse; }
     font-weight: 600;
 }
 
-.stat-change.up { color: var(--black); }
+.stat-change.up { color: var(--accent-red); }
 .stat-change.down { color: var(--grey-400); }
 
 .stat-bar {
@@ -408,7 +410,7 @@ table { width: 100%; border-collapse: collapse; }
 }
 
 .card-head h3 {
-    font-family: var(--font-display);
+    font-family: var(--font);
     font-size: 14px;
     font-weight: 600;
     letter-spacing: -0.01em;
@@ -544,7 +546,7 @@ table { width: 100%; border-collapse: collapse; }
 }
 
 .channel-val {
-    font-family: var(--font-display);
+    font-family: var(--font);
     font-size: 13px;
     font-weight: 600;
     width: 44px;
@@ -588,7 +590,7 @@ table tbody tr:hover {
 }
 
 .td-num {
-    font-family: var(--font-display);
+    font-family: var(--font);
     font-weight: 500;
     font-size: 12px;
 }
@@ -612,7 +614,7 @@ table tbody tr:hover {
 }
 
 .status.live {
-    background: var(--black);
+    background: var(--accent-red);
     color: var(--white);
 }
 
@@ -673,7 +675,7 @@ table tbody tr:hover {
 }
 
 .journey-pct {
-    font-family: var(--font-display);
+    font-family: var(--font);
     font-size: 12px;
     font-weight: 600;
     width: 32px;
