@@ -220,7 +220,7 @@ table { width: 100%; border-collapse: collapse; }
 .stat-change.down { color: var(--negative); }
 
 .stat-bar { height: 2px; background: var(--grey-150); margin-top: 4px; }
-.stat-bar-fill { height: 100%; background: var(--black); transition: width 1s cubic-bezier(0.4,0,0.2,1); }
+.stat-bar-fill { height: 100%; background: #212121; transition: width 1s cubic-bezier(0.4,0,0.2,1); }
 
 /* ===== CARDS ===== */
 .card {
@@ -264,7 +264,7 @@ table { width: 100%; border-collapse: collapse; }
 
 .chart-col .bar {
     width: 100%;
-    background: var(--red);
+    background: #212121;
     transition: height 0.4s cubic-bezier(0.4,0,0.2,1), opacity 0.2s;
     position: relative;
 }
@@ -292,7 +292,7 @@ table { width: 100%; border-collapse: collapse; }
 .channel-name { width: 60px; font-size: 11px; font-weight: 500; color: var(--grey-600); }
 .channel-bar-wrap { flex: 1; height: 5px; background: var(--grey-100); position: relative; overflow: hidden; }
 .channel-bar-wrap::before { content:''; position: absolute; top:0; left:0; right:0; height:1px; background: rgba(255,255,255,0.5); }
-.channel-bar { height: 100%; background: var(--black); transition: width 0.6s cubic-bezier(0.4,0,0.2,1); position: relative; }
+.channel-bar { height: 100%; background: #212121; transition: width 0.6s cubic-bezier(0.4,0,0.2,1); position: relative; }
 .channel-bar::after { content:''; position: absolute; top:0; left:0; right:0; height:1px; background: rgba(255,255,255,0.2); }
 .channel-val { font-size: 12px; font-weight: 600; width: 40px; text-align: right; }
 
@@ -323,7 +323,7 @@ table tbody tr:hover .td-name { color: var(--red); }
 .journey-name { font-size: 12px; font-weight: 500; transition: color 0.15s; }
 .journey-meta { font-size: 10px; color: var(--grey-400); }
 .journey-bar-wrap { width: 80px; height: 3px; background: var(--grey-150); }
-.journey-bar { height: 100%; background: var(--black); transition: width 0.6s cubic-bezier(0.4,0,0.2,1); }
+.journey-bar { height: 100%; background: #212121; transition: width 0.6s cubic-bezier(0.4,0,0.2,1); }
 .journey-pct { font-size: 11px; font-weight: 600; width: 28px; text-align: right; }
 
 /* ===== ACTIVITY FEED ===== */
