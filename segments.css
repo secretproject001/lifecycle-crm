@@ -229,3 +229,87 @@
 .results-table td { padding: 10px 12px; font-size: 12px; border-bottom: 1px solid var(--grey-100); }
 
 @keyframes slideDown { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: translateY(0); } }
+
+/* ===== PAGE TABS ===== */
+.page-tabs { display: flex; gap: 0; border-bottom: 1px solid var(--grey-200); margin-bottom: 20px; }
+.page-tab {
+    padding: 10px 20px; font-size: 12px; font-weight: 500;
+    color: var(--grey-500); border-bottom: 2px solid transparent;
+    transition: all 0.12s; cursor: pointer;
+}
+.page-tab.active { color: var(--red); border-bottom-color: var(--red); }
+.page-tab:hover:not(.active) { color: var(--black); }
+
+.tab-content { animation: slideDown 0.2s ease; }
+
+/* Segment Name */
+.segment-name-row { margin-bottom: 4px; }
+.segment-name-input {
+    width: 100%; padding: 10px 14px;
+    border: 1px solid var(--grey-200); font-family: var(--font);
+    font-size: 14px; font-weight: 500; outline: none;
+    transition: border-color 0.12s;
+}
+.segment-name-input:focus { border-color: var(--red); }
+.segment-name-input::placeholder { color: var(--grey-300); font-weight: 400; }
+
+/* Saved Table */
+.saved-desc { font-size: 11px; color: var(--grey-500); max-width: 320px; line-height: 1.5; }
+.saved-row { cursor: pointer; transition: all 0.12s; }
+.saved-row:hover { background: var(--red-light); }
+.saved-row:hover .td-name { color: var(--red); }
+.saved-actions { display: flex; gap: 6px; }
+.saved-action-btn {
+    font-size: 10px; padding: 4px 8px;
+    border: 1px solid var(--grey-200); color: var(--grey-500);
+    background: var(--white); cursor: pointer; transition: all 0.12s;
+}
+.saved-action-btn:hover { border-color: var(--red); color: var(--red); }
+
+/* Detail View */
+.detail-content { padding: 20px; display: flex; flex-direction: column; gap: 20px; }
+.detail-meta { display: flex; flex-direction: column; gap: 8px; }
+.detail-desc { font-size: 13px; color: var(--grey-700); line-height: 1.6; padding: 12px 16px; background: var(--grey-50); border: 1px solid var(--grey-100); }
+.detail-stats { display: flex; gap: 24px; }
+.detail-stat { font-size: 12px; color: var(--grey-500); }
+.detail-stat strong { color: var(--black); }
+.detail-actions-row { display: flex; gap: 8px; }
+.detail-users-section h4 { font-size: 11px; font-weight: 600; letter-spacing: 0.08em; color: var(--grey-400); text-transform: uppercase; margin-bottom: 10px; }
+.btn-back { font-size: 11px; font-weight: 500; color: var(--red); cursor: pointer; transition: color 0.1s; border: none; background: none; font-family: var(--font); }
+.btn-back:hover { color: var(--black); }
+
+/* Export Modal */
+.export-overlay {
+    position: fixed; inset: 0; background: rgba(0,0,0,0.4);
+    z-index: 6000; display: flex; align-items: center; justify-content: center;
+    backdrop-filter: blur(2px); animation: fadeIn 0.15s;
+}
+.export-modal {
+    background: var(--white); width: 480px;
+    box-shadow: 0 16px 48px rgba(0,0,0,0.15); animation: scaleIn 0.2s;
+}
+.export-header {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 16px 24px; border-bottom: 1px solid var(--grey-100);
+}
+.export-header h3 { font-size: 14px; font-weight: 600; }
+.export-close { font-size: 20px; color: var(--grey-400); line-height: 1; cursor: pointer; }
+.export-close:hover { color: var(--black); }
+.export-body { padding: 20px 24px; }
+.export-desc { font-size: 12px; color: var(--grey-600); margin-bottom: 14px; }
+.export-attrs { display: flex; flex-wrap: wrap; gap: 8px; }
+.export-attr-item {
+    display: flex; align-items: center; gap: 5px;
+    padding: 5px 10px; border: 1px solid var(--grey-200);
+    font-size: 11px; cursor: pointer; transition: all 0.12s; user-select: none;
+}
+.export-attr-item.selected { border-color: var(--red); background: var(--red-light); color: var(--red); }
+.export-attr-item:hover:not(.selected) { border-color: var(--grey-300); }
+.export-select-actions { display: flex; gap: 12px; margin-top: 12px; }
+.export-footer {
+    display: flex; align-items: center; justify-content: flex-end;
+    gap: 8px; padding: 14px 24px; border-top: 1px solid var(--grey-100);
+}
+
+@keyframes fadeIn { from { opacity: 0 } to { opacity: 1 } }
+@keyframes scaleIn { from { opacity: 0; transform: scale(0.96) } to { opacity: 1; transform: scale(1) } }

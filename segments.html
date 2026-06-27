@@ -51,56 +51,122 @@
             </header>
 
             <div class="content">
-                <!-- Segment Builder -->
-                <div class="segment-builder-card">
-                    <!-- Mode Toggle -->
-                    <div class="builder-mode-row">
-                        <label class="radio-label"><input type="radio" name="mode" value="all" /><span class="radio-custom"></span> All users</label>
-                        <label class="radio-label"><input type="radio" name="mode" value="filter" checked /><span class="radio-custom"></span> Filter users by</label>
-                        <button class="logic-toggle-btn" id="logicToggle">Inside blocks: AND · Between blocks: OR</button>
-                    </div>
+                <!-- Page Tabs -->
+                <div class="page-tabs">
+                    <button class="page-tab active" data-tab="create">Create Segment</button>
+                    <button class="page-tab" data-tab="saved">Saved Segments</button>
+                </div>
 
-                    <div class="filter-area">
-                        <!-- Filter Blocks -->
-                        <div class="filter-groups" id="filterGroups"></div>
-
-                        <!-- Add Block Button -->
-                        <div class="add-filter-row">
-                            <button class="add-filter-btn" id="addFilterBtn">+ Block</button>
+                <!-- TAB: Create Segment -->
+                <div class="tab-content" id="tabCreate">
+                    <div class="segment-builder-card">
+                        <!-- Segment Name -->
+                        <div class="segment-name-row">
+                            <input type="text" id="segmentNameInput" placeholder="Segment name (optional)" class="segment-name-input" />
                         </div>
 
-                        <!-- Exclude -->
-                        <div class="exclude-row">
-                            <label class="checkbox-label">
-                                <input type="checkbox" id="excludeToggle" />
-                                <span class="checkbox-custom"></span>
-                                Exclude Users
-                            </label>
+                        <!-- Mode Toggle -->
+                        <div class="builder-mode-row">
+                            <label class="radio-label"><input type="radio" name="mode" value="all" /><span class="radio-custom"></span> All users</label>
+                            <label class="radio-label"><input type="radio" name="mode" value="filter" checked /><span class="radio-custom"></span> Filter users by</label>
+                            <button class="logic-toggle-btn" id="logicToggle">Inside blocks: AND · Between blocks: OR</button>
                         </div>
-                        <div class="exclude-section" id="excludeSection" style="display:none">
-                            <div class="filter-groups" id="excludeGroups"></div>
+
+                        <div class="filter-area">
+                            <div class="filter-groups" id="filterGroups"></div>
                             <div class="add-filter-row">
-                                <button class="add-filter-btn secondary" id="addExcludeFilterBtn">+ Exclude Block</button>
+                                <button class="add-filter-btn" id="addFilterBtn">+ Block</button>
+                            </div>
+                            <div class="exclude-row">
+                                <label class="checkbox-label"><input type="checkbox" id="excludeToggle" /><span class="checkbox-custom"></span> Exclude Users</label>
+                            </div>
+                            <div class="exclude-section" id="excludeSection" style="display:none">
+                                <div class="filter-groups" id="excludeGroups"></div>
+                                <div class="add-filter-row"><button class="add-filter-btn secondary" id="addExcludeFilterBtn">+ Exclude Block</button></div>
+                            </div>
+                        </div>
+
+                        <div class="builder-actions-row">
+                            <button class="reset-btn" id="resetBtn">↻ Reset Filters</button>
+                            <div class="builder-actions-right">
+                                <button class="actions-btn" id="saveSegmentBtn">Save Segment</button>
+                                <button class="show-count-btn" id="showCountBtn">Show count</button>
+                            </div>
+                        </div>
+
+                        <div class="query-results" id="queryResults" style="display:none">
+                            <div class="results-header"><h4>Query Results</h4></div>
+                            <table class="results-table">
+                                <thead><tr><th>Query Time</th><th>Description</th><th>Source</th><th>User Count</th><th>Reachable Users</th></tr></thead>
+                                <tbody id="queryResultsBody"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB: Saved Segments -->
+                <div class="tab-content" id="tabSaved" style="display:none">
+                    <div class="card">
+                        <div class="card-head"><h3>Saved Segments</h3><span class="card-period" id="savedCount">0 segments</span></div>
+                        <div class="table-wrap">
+                            <table>
+                                <thead><tr><th>NAME</th><th>CONDITIONS</th><th>USERS</th><th>CREATED</th><th></th></tr></thead>
+                                <tbody id="savedSegmentsBody"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Segment Detail View -->
+                <div class="tab-content" id="tabDetail" style="display:none">
+                    <div class="card">
+                        <div class="card-head">
+                            <h3 id="detailTitle">Segment Detail</h3>
+                            <button class="btn-back" id="backToSaved">← Back</button>
+                        </div>
+                        <div class="detail-content">
+                            <div class="detail-meta">
+                                <div class="detail-desc" id="detailDesc"></div>
+                                <div class="detail-stats">
+                                    <span class="detail-stat"><strong id="detailUserCount">0</strong> users</span>
+                                    <span class="detail-stat">Created <span id="detailDate"></span></span>
+                                </div>
+                            </div>
+                            <div class="detail-actions-row">
+                                <button class="show-count-btn" id="exportBtn">Export Users</button>
+                            </div>
+                            <div class="detail-users-section">
+                                <h4>Sample Users (10)</h4>
+                                <div class="table-wrap">
+                                    <table>
+                                        <thead><tr><th>USER ID</th><th>EMAIL</th><th>CITY</th><th>PLAN</th><th>LTV</th><th>LAST ACTIVE</th></tr></thead>
+                                        <tbody id="detailUsersBody"></tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div>
                     </div>
+                </div>
 
-                    <!-- Actions Row -->
-                    <div class="builder-actions-row">
-                        <button class="reset-btn" id="resetBtn">↻ Reset Filters</button>
-                        <div class="builder-actions-right">
-                            <button class="actions-btn">+ Actions ▾</button>
-                            <button class="show-count-btn" id="showCountBtn">Show count</button>
+                <!-- Export Modal -->
+                <div class="export-overlay" id="exportOverlay" style="display:none">
+                    <div class="export-modal">
+                        <div class="export-header">
+                            <h3>Export Segment Users</h3>
+                            <button class="export-close" id="exportClose">×</button>
                         </div>
-                    </div>
-
-                    <!-- Results -->
-                    <div class="query-results" id="queryResults" style="display:none">
-                        <div class="results-header"><h4>Query Results</h4></div>
-                        <table class="results-table">
-                            <thead><tr><th>Query Time</th><th>Description</th><th>Source</th><th>User Count</th><th>Reachable Users</th></tr></thead>
-                            <tbody id="queryResultsBody"></tbody>
-                        </table>
+                        <div class="export-body">
+                            <p class="export-desc">Select user attributes to include in the CSV export:</p>
+                            <div class="export-attrs" id="exportAttrs"></div>
+                            <div class="export-select-actions">
+                                <button class="filter-link" id="selectAllAttrs">Select All</button>
+                                <button class="filter-link" id="deselectAllAttrs">Deselect All</button>
+                            </div>
+                        </div>
+                        <div class="export-footer">
+                            <button class="actions-btn" id="exportCancel">Cancel</button>
+                            <button class="show-count-btn" id="exportConfirm">Download CSV</button>
+                        </div>
                     </div>
                 </div>
             </div>

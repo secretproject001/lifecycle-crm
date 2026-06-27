@@ -306,3 +306,201 @@ document.querySelectorAll('input[name="mode"]').forEach(radio => {
         document.querySelector('.filter-area').style.display = isAll ? 'none' : '';
     });
 });
+
+// ===== PAGE TABS =====
+const tabs = document.querySelectorAll('.page-tab');
+const tabCreate = document.getElementById('tabCreate');
+const tabSaved = document.getElementById('tabSaved');
+const tabDetail = document.getElementById('tabDetail');
+
+function showTab(name) {
+    tabCreate.style.display = name === 'create' ? '' : 'none';
+    tabSaved.style.display = name === 'saved' ? '' : 'none';
+    tabDetail.style.display = name === 'detail' ? '' : 'none';
+    tabs.forEach(t => t.classList.toggle('active', t.dataset.tab === name));
+}
+tabs.forEach(t => t.addEventListener('click', () => showTab(t.dataset.tab)));
+
+// ===== SAVED SEGMENTS STORE =====
+let savedSegments = [
+    { id: 1, name: 'High-Value Customers', desc: 'Users where Lifetime Value is greater than $500 AND Total Orders is greater than 5', users: 12430, created: 'Jun 12, 2026' },
+    { id: 2, name: 'Cart Abandoners (7d)', desc: 'Users who Has Executed add_to_cart at least 1 times in the last 7 days AND Has Not Executed purchase_completed', users: 3891, created: 'Jun 8, 2026' },
+    { id: 3, name: 'Churning Users', desc: 'Users where Last Seen is before 30 days ago OR Total Orders equals 0', users: 1204, created: 'Jun 5, 2026' },
+    { id: 4, name: 'Power Users', desc: 'Users who Has Executed app_open at least 10 times in the last 7 days AND Lifetime Value is greater than $200', users: 890, created: 'May 28, 2026' },
+    { id: 5, name: 'New Signups (30d)', desc: 'Users where First Seen is in the last 30 days', users: 5612, created: 'May 20, 2026' },
+];
+
+const sampleUsers = [
+    { id: 'user_29481', email: 'priya@gmail.com', city: 'Mumbai', plan: 'Pro', ltv: '$1,240', lastActive: '2 min ago' },
+    { id: 'user_10234', email: 'rahul.k@outlook.com', city: 'Delhi', plan: 'Free', ltv: '$180', lastActive: '1 hr ago' },
+    { id: 'user_44821', email: 'sneha.d@yahoo.com', city: 'Bangalore', plan: 'Pro', ltv: '$2,890', lastActive: '15 min ago' },
+    { id: 'user_55190', email: 'amit.p@gmail.com', city: 'Ahmedabad', plan: 'Enterprise', ltv: '$8,420', lastActive: '5 min ago' },
+    { id: 'user_33847', email: 'meera.r@hotmail.com', city: 'Hyderabad', plan: 'Pro', ltv: '$720', lastActive: '3 hrs ago' },
+    { id: 'user_19283', email: 'vikram@gmail.com', city: 'Chennai', plan: 'Pro', ltv: '$960', lastActive: '20 min ago' },
+    { id: 'user_77012', email: 'anjali.m@gmail.com', city: 'Pune', plan: 'Free', ltv: '$340', lastActive: '45 min ago' },
+    { id: 'user_88431', email: 'deepak.s@yahoo.com', city: 'Kolkata', plan: 'Pro', ltv: '$1,100', lastActive: '10 min ago' },
+    { id: 'user_62190', email: 'nisha.k@outlook.com', city: 'Jaipur', plan: 'Enterprise', ltv: '$5,200', lastActive: '8 min ago' },
+    { id: 'user_41098', email: 'ravi.t@gmail.com', city: 'Lucknow', plan: 'Free', ltv: '$90', lastActive: '2 hrs ago' },
+    { id: 'user_55623', email: 'kavya.n@gmail.com', city: 'Mumbai', plan: 'Pro', ltv: '$1,780', lastActive: '30 min ago' },
+    { id: 'user_38291', email: 'arjun.b@outlook.com', city: 'Delhi', plan: 'Pro', ltv: '$640', lastActive: '1 hr ago' },
+];
+
+function renderSavedSegments() {
+    const body = document.getElementById('savedSegmentsBody');
+    const recent = savedSegments.slice(-30).reverse();
+    body.innerHTML = recent.map(seg => `
+        <tr class="saved-row" data-seg-id="${seg.id}">
+            <td class="td-name">${seg.name}</td>
+            <td><span class="saved-desc">${seg.desc}</span></td>
+            <td class="td-num">${seg.users.toLocaleString()}</td>
+            <td class="td-date">${seg.created}</td>
+            <td>
+                <div class="saved-actions">
+                    <button class="saved-action-btn export-seg" data-seg-id="${seg.id}">Export</button>
+                </div>
+            </td>
+        </tr>
+    `).join('');
+    document.getElementById('savedCount').textContent = recent.length + ' segments';
+
+    // Row click → detail
+    body.querySelectorAll('.saved-row').forEach(row => {
+        row.addEventListener('click', (e) => {
+            if (e.target.closest('.saved-action-btn')) return;
+            openSegmentDetail(parseInt(row.dataset.segId));
+        });
+    });
+
+    // Export buttons
+    body.querySelectorAll('.export-seg').forEach(btn => {
+        btn.addEventListener('click', () => openExport(parseInt(btn.dataset.segId)));
+    });
+}
+
+// ===== GENERATE DESCRIPTION FROM BUILDER =====
+function generateDescription() {
+    const blocks = filterGroups.querySelectorAll('.filter-block');
+    if (blocks.length === 0) return 'All users';
+    const parts = [];
+    blocks.forEach(block => {
+        const conds = block.querySelectorAll('.condition-item');
+        const condParts = [];
+        conds.forEach(cond => {
+            const selects = cond.querySelectorAll('.f-select');
+            const inputs = cond.querySelectorAll('.f-input');
+            const values = [...selects, ...inputs].map(el => el.value).filter(v => v);
+            condParts.push(values.join(' '));
+        });
+        parts.push(condParts.join(` ${intraLogic} `));
+    });
+    return 'Users where ' + parts.join(` ${getInterLogic()} `);
+}
+
+// ===== SAVE SEGMENT =====
+document.getElementById('saveSegmentBtn').addEventListener('click', () => {
+    const name = document.getElementById('segmentNameInput').value || 'Untitled Segment #' + (savedSegments.length + 1);
+    const desc = generateDescription();
+    const count = Math.floor(Math.random() * 12000) + 500;
+    const now = new Date();
+    const created = now.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+    savedSegments.push({ id: Date.now(), name, desc, users: count, created });
+    renderSavedSegments();
+    showToast('Segment "' + name + '" saved — ' + count.toLocaleString() + ' users');
+    showTab('saved');
+});
+
+// ===== SEGMENT DETAIL =====
+let currentDetailSegment = null;
+
+function openSegmentDetail(segId) {
+    const seg = savedSegments.find(s => s.id === segId);
+    if (!seg) return;
+    currentDetailSegment = seg;
+    showTab('detail');
+    document.getElementById('detailTitle').textContent = seg.name;
+    document.getElementById('detailDesc').textContent = seg.desc;
+    document.getElementById('detailUserCount').textContent = seg.users.toLocaleString();
+    document.getElementById('detailDate').textContent = seg.created;
+
+    // Show 10 random users
+    const shuffled = [...sampleUsers].sort(() => Math.random() - 0.5).slice(0, 10);
+    document.getElementById('detailUsersBody').innerHTML = shuffled.map(u => `
+        <tr>
+            <td class="td-name">${u.id}</td>
+            <td>${u.email}</td>
+            <td>${u.city}</td>
+            <td><span class="badge">${u.plan}</span></td>
+            <td>${u.ltv}</td>
+            <td class="td-date">${u.lastActive}</td>
+        </tr>
+    `).join('');
+}
+
+document.getElementById('backToSaved').addEventListener('click', () => showTab('saved'));
+document.getElementById('exportBtn').addEventListener('click', () => {
+    if (currentDetailSegment) openExport(currentDetailSegment.id);
+});
+
+// ===== EXPORT =====
+const exportableAttrs = ['user_id', 'email', 'phone', 'name', 'city', 'country', 'gender', 'age', 'plan', 'signup_date', 'total_orders', 'lifetime_value', 'last_active', 'device_type', 'signup_source'];
+let selectedExportAttrs = new Set(['user_id', 'email', 'city', 'plan', 'lifetime_value']);
+let exportSegmentId = null;
+
+function openExport(segId) {
+    exportSegmentId = segId;
+    const overlay = document.getElementById('exportOverlay');
+    overlay.style.display = 'flex';
+    renderExportAttrs();
+}
+
+function renderExportAttrs() {
+    const container = document.getElementById('exportAttrs');
+    container.innerHTML = exportableAttrs.map(attr => `
+        <div class="export-attr-item ${selectedExportAttrs.has(attr) ? 'selected' : ''}" data-attr="${attr}">${attr}</div>
+    `).join('');
+    container.querySelectorAll('.export-attr-item').forEach(item => {
+        item.addEventListener('click', () => {
+            const attr = item.dataset.attr;
+            if (selectedExportAttrs.has(attr)) selectedExportAttrs.delete(attr);
+            else selectedExportAttrs.add(attr);
+            item.classList.toggle('selected');
+        });
+    });
+}
+
+document.getElementById('exportClose').addEventListener('click', () => document.getElementById('exportOverlay').style.display = 'none');
+document.getElementById('exportCancel').addEventListener('click', () => document.getElementById('exportOverlay').style.display = 'none');
+document.getElementById('selectAllAttrs').addEventListener('click', () => { selectedExportAttrs = new Set(exportableAttrs); renderExportAttrs(); });
+document.getElementById('deselectAllAttrs').addEventListener('click', () => { selectedExportAttrs = new Set(); renderExportAttrs(); });
+
+document.getElementById('exportConfirm').addEventListener('click', () => {
+    if (selectedExportAttrs.size === 0) { showToast('Select at least one attribute'); return; }
+    const seg = savedSegments.find(s => s.id === exportSegmentId);
+    const attrs = [...selectedExportAttrs];
+    
+    // Generate CSV
+    let csv = attrs.join(',') + '\n';
+    const shuffled = [...sampleUsers].sort(() => Math.random() - 0.5).slice(0, 10);
+    shuffled.forEach(u => {
+        const row = attrs.map(a => {
+            const map = { user_id: u.id, email: u.email, city: u.city, plan: u.plan, lifetime_value: u.ltv, last_active: u.lastActive, name: u.id, phone: '+91 XXXXX XXXXX', country: 'India', gender: Math.random() > 0.5 ? 'Male' : 'Female', age: Math.floor(Math.random() * 20) + 22, signup_date: '2024-' + String(Math.floor(Math.random()*12)+1).padStart(2,'0') + '-' + String(Math.floor(Math.random()*28)+1).padStart(2,'0'), total_orders: Math.floor(Math.random() * 30) + 1, device_type: ['iOS','Android','Web'][Math.floor(Math.random()*3)], signup_source: ['organic','referral','paid','social'][Math.floor(Math.random()*4)] };
+            return map[a] || '';
+        });
+        csv += row.join(',') + '\n';
+    });
+
+    // Download
+    const blob = new Blob([csv], { type: 'text/csv' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = (seg ? seg.name.replace(/\s+/g, '_') : 'segment') + '_export.csv';
+    a.click();
+    URL.revokeObjectURL(url);
+
+    document.getElementById('exportOverlay').style.display = 'none';
+    showToast('CSV exported with ' + attrs.length + ' attributes');
+});
+
+// ===== INIT =====
+renderSavedSegments();
