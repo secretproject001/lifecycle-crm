@@ -18,8 +18,9 @@ let selectedChannel = 'email';
 
 function goToStep(step) {
     currentStep = step;
-    document.querySelectorAll('.step-content').forEach(s => s.classList.remove('active'));
-    document.querySelectorAll('.step-content')[step - 1].classList.add('active');
+    document.querySelectorAll('.step-content').forEach(s => { s.classList.remove('active'); });
+    const steps = document.querySelectorAll('.step-content');
+    steps[step - 1].classList.add('active');
     document.querySelectorAll('.step-indicator .step').forEach((s, i) => {
         s.classList.remove('active', 'done');
         if (i + 1 === step) s.classList.add('active');

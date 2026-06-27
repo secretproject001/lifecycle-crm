@@ -10,7 +10,7 @@
 .step-connector { width: 40px; height: 1px; background: var(--grey-200); }
 
 .step-content { display: none; flex-direction: column; gap: 16px; animation: slideDown 0.2s ease; }
-.step-content.active { display: flex; }
+.step-content.active { display: flex !important; }
 
 /* ===== CHANNEL SELECTOR ===== */
 .channel-selector { display: flex; gap: 10px; padding: 16px 20px; }
