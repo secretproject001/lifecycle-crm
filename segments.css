@@ -1,0 +1,223 @@
+/* ===== SEGMENTS PAGE ===== */
+
+.segment-filter-tabs {
+    display: flex;
+    border: 1px solid var(--grey-200);
+    background: var(--grey-100);
+}
+
+.type-event { background: var(--red-light); border-color: var(--red); color: var(--red); }
+.type-attr { background: var(--blue-light); border-color: var(--blue); color: var(--blue); }
+
+.segment-row { cursor: pointer; }
+.segment-row:hover { background: var(--red-light); }
+.segment-row:hover .td-name { color: var(--red); }
+.td-date { font-size: 11px; color: var(--grey-500); }
+
+/* ===== SEGMENT BUILDER MODAL ===== */
+.segment-builder-overlay {
+    position: fixed; inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 6000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(2px);
+    animation: fadeIn 0.15s ease;
+}
+.segment-builder-overlay.open { display: flex; }
+
+.segment-builder {
+    background: var(--white);
+    width: 680px;
+    max-height: 85vh;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+    animation: scaleIn 0.2s ease;
+}
+
+.builder-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 28px;
+    border-bottom: 1px solid var(--grey-100);
+}
+.builder-header h2 { font-size: 16px; font-weight: 700; }
+.builder-close { font-size: 22px; color: var(--grey-400); line-height: 1; padding: 4px; }
+.builder-close:hover { color: var(--black); }
+
+.builder-body {
+    flex: 1;
+    overflow-y: auto;
+    padding: 24px 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.builder-name-row { display: flex; flex-direction: column; gap: 6px; }
+.builder-name-row label { font-size: 10px; font-weight: 600; letter-spacing: 0.1em; color: var(--grey-500); }
+.builder-name-row input {
+    padding: 10px 14px;
+    border: 1px solid var(--grey-200);
+    font-family: var(--font);
+    font-size: 13px;
+    outline: none;
+    transition: border-color 0.15s;
+}
+.builder-name-row input:focus { border-color: var(--red); }
+
+.builder-section h4 { font-size: 13px; font-weight: 600; margin-bottom: 4px; }
+.builder-desc { font-size: 11px; color: var(--grey-500); }
+
+/* ===== CONDITIONS ===== */
+.conditions-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.condition-card {
+    border: 1px solid var(--grey-200);
+    padding: 16px 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    animation: slideDown 0.2s ease;
+    position: relative;
+    transition: border-color 0.15s;
+}
+.condition-card:hover { border-color: var(--grey-300); }
+.condition-card.event-type { border-left: 3px solid var(--red); }
+.condition-card.attr-type { border-left: 3px solid var(--blue); }
+
+.condition-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.condition-type-label {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+.condition-card.event-type .condition-type-label { color: var(--red); }
+.condition-card.attr-type .condition-type-label { color: var(--blue); }
+
+.condition-remove {
+    font-size: 16px;
+    color: var(--grey-400);
+    line-height: 1;
+    padding: 2px 6px;
+    transition: color 0.1s;
+}
+.condition-remove:hover { color: var(--negative); }
+
+.condition-row {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.condition-select, .condition-input {
+    padding: 7px 10px;
+    border: 1px solid var(--grey-200);
+    font-family: var(--font);
+    font-size: 11px;
+    background: var(--white);
+    outline: none;
+    transition: border-color 0.15s;
+    color: var(--black);
+}
+.condition-select:focus, .condition-input:focus { border-color: var(--red); }
+.condition-select { min-width: 140px; cursor: pointer; -webkit-appearance: none; appearance: none; background-image: url("data:image/svg+xml,%3Csvg width='10' height='6' viewBox='0 0 10 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L5 5L9 1' stroke='%23999' stroke-width='1.3'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 10px center; padding-right: 28px; }
+.condition-input { flex: 1; }
+
+.condition-attr-row {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    margin-top: 4px;
+    padding-top: 8px;
+    border-top: 1px dashed var(--grey-150);
+}
+.condition-attr-label {
+    font-size: 10px;
+    color: var(--grey-500);
+    font-weight: 500;
+    min-width: 80px;
+}
+
+/* ===== ADD CONDITION BUTTONS ===== */
+.add-condition-row {
+    display: flex;
+    gap: 10px;
+}
+
+.add-condition-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 9px 14px;
+    border: 1px dashed var(--grey-300);
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--grey-600);
+    transition: all 0.15s;
+}
+.add-condition-btn:hover {
+    border-color: var(--red);
+    color: var(--red);
+    background: var(--red-light);
+}
+.add-condition-btn.secondary:hover {
+    border-color: var(--blue);
+    color: var(--blue);
+    background: var(--blue-light);
+}
+
+/* ===== BUILDER FOOTER ===== */
+.builder-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 28px;
+    border-top: 1px solid var(--grey-100);
+    background: var(--grey-50);
+}
+
+.builder-preview {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+.preview-label { font-size: 9px; font-weight: 600; letter-spacing: 0.08em; color: var(--grey-400); }
+.preview-count { font-size: 20px; font-weight: 700; color: var(--black); }
+
+.builder-actions { display: flex; gap: 8px; }
+.btn-cancel {
+    padding: 9px 16px;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--grey-600);
+    border: 1px solid var(--grey-200);
+    background: var(--white);
+    transition: all 0.12s;
+}
+.btn-cancel:hover { border-color: var(--grey-300); color: var(--black); }
+.btn-save {
+    padding: 9px 16px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--white);
+    background: var(--red);
+    transition: all 0.15s;
+}
+.btn-save:hover { background: #b84832; transform: translateY(-1px); box-shadow: 0 4px 12px rgba(212,88,63,0.2); }
+
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes scaleIn { from { opacity: 0; transform: scale(0.96); } to { opacity: 1; transform: scale(1); } }
+@keyframes slideDown { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: translateY(0); } }
