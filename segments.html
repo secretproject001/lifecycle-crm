@@ -57,30 +57,31 @@
                     <div class="builder-mode-row">
                         <label class="radio-label"><input type="radio" name="mode" value="all" /><span class="radio-custom"></span> All users</label>
                         <label class="radio-label"><input type="radio" name="mode" value="filter" checked /><span class="radio-custom"></span> Filter users by</label>
+                        <button class="logic-toggle-btn" id="logicToggle">Inside blocks: AND · Between blocks: OR</button>
                     </div>
 
-                    <!-- Filter Groups (AND/OR) -->
-                    <div class="filter-groups" id="filterGroups">
-                        <!-- Filter group gets added here -->
-                    </div>
+                    <div class="filter-area">
+                        <!-- Filter Blocks -->
+                        <div class="filter-groups" id="filterGroups"></div>
 
-                    <!-- Add Filter Button -->
-                    <div class="add-filter-row">
-                        <button class="add-filter-btn" id="addFilterBtn">+ Filter</button>
-                    </div>
-
-                    <!-- Exclude -->
-                    <div class="exclude-row">
-                        <label class="checkbox-label">
-                            <input type="checkbox" id="excludeToggle" />
-                            <span class="checkbox-custom"></span>
-                            Exclude Users
-                        </label>
-                    </div>
-                    <div class="exclude-section" id="excludeSection" style="display:none">
-                        <div class="filter-groups" id="excludeGroups"></div>
+                        <!-- Add Block Button -->
                         <div class="add-filter-row">
-                            <button class="add-filter-btn secondary" id="addExcludeFilterBtn">+ Exclude Filter</button>
+                            <button class="add-filter-btn" id="addFilterBtn">+ Block</button>
+                        </div>
+
+                        <!-- Exclude -->
+                        <div class="exclude-row">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="excludeToggle" />
+                                <span class="checkbox-custom"></span>
+                                Exclude Users
+                            </label>
+                        </div>
+                        <div class="exclude-section" id="excludeSection" style="display:none">
+                            <div class="filter-groups" id="excludeGroups"></div>
+                            <div class="add-filter-row">
+                                <button class="add-filter-btn secondary" id="addExcludeFilterBtn">+ Exclude Block</button>
+                            </div>
                         </div>
                     </div>
 
@@ -95,19 +96,9 @@
 
                     <!-- Results -->
                     <div class="query-results" id="queryResults" style="display:none">
-                        <div class="results-header">
-                            <h4>Query Results</h4>
-                        </div>
+                        <div class="results-header"><h4>Query Results</h4></div>
                         <table class="results-table">
-                            <thead>
-                                <tr>
-                                    <th>Query Time</th>
-                                    <th>Description</th>
-                                    <th>Source</th>
-                                    <th>User Count</th>
-                                    <th>Reachable Users</th>
-                                </tr>
-                            </thead>
+                            <thead><tr><th>Query Time</th><th>Description</th><th>Source</th><th>User Count</th><th>Reachable Users</th></tr></thead>
                             <tbody id="queryResultsBody"></tbody>
                         </table>
                     </div>
